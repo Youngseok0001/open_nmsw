@@ -1,0 +1,11 @@
+# @package _group_
+name: GlobalLocalSeg3D
+local_backbone_name: "FasterUNet" # FasterUNet | DeepLabPlus | MedNeXtMedium | UNETRSwin 
+global_backbone_name : "FasterUNet" # FasterUNet | DeepLabPlus | MedNeXtMedium | UNETRSwin 
+overlap_r: [0.5, 0.5, 0.5]
+num_infernce_patches: 5 # num_patches is ignored if sampling_stretegy = "random"
+sigma_scale : 0.125
+patch_weight : 0.99 # almost rely on local when available
+sampling_stretegy: "random" # s_w | random_fg | random
+local_ckpt_path: null
+global_ckpt_path: null

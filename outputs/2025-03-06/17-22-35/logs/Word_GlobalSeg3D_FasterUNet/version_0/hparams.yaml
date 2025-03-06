@@ -1,0 +1,150 @@
+cfg: !!python/object/new:easydict.EasyDict
+  dictitems:
+    batch_size: 1
+    check_val_every_n_epoch: 2
+    ckpt_base_path: ckpts
+    ckpt_path: null
+    dataset_name: Word
+    do_vis: true
+    down_size_rate: &id004
+    - 3
+    - 3
+    - 3
+    epoch: 300
+    fold: -1
+    gpu_id: 0
+    input_shape: &id005
+    - 1
+    - 480
+    - 480
+    - 288
+    label_keys: &id006
+    - background
+    - liver
+    - spleen
+    - left_kidney
+    - right_kidney
+    - stomach
+    - gallbladder
+    - esophagus
+    - pancreas
+    - duodenum
+    - colon
+    - intestine
+    - adrenal
+    - rectum
+    - bladder
+    - Head_of_femur_L
+    - Head_of_femur_R
+    log_base_path: logs
+    model: &id007 !!python/object/new:easydict.EasyDict
+      dictitems:
+        ckpt_path: null
+        down_size_rate: &id001
+        - 3
+        - 3
+        - 3
+        global_backbone_name: FasterUNet
+        global_loss: &id002 !!python/object/new:easydict.EasyDict
+          dictitems:
+            batch: false
+            ce_weight: null
+            dice_weight: null
+            include_background: false
+            lambda_ce: 1
+            lambda_dice: 1
+            name: DiceCELossMONAI
+            reduction: mean
+            softmax: true
+            squared_pred: false
+            to_onehot_y: true
+          state:
+            batch: false
+            ce_weight: null
+            dice_weight: null
+            include_background: false
+            lambda_ce: 1
+            lambda_dice: 1
+            name: DiceCELossMONAI
+            reduction: mean
+            softmax: true
+            squared_pred: false
+            to_onehot_y: true
+        name: GlobalSeg3D
+        patch_size: &id003
+        - 128
+        - 128
+        - 128
+      state:
+        ckpt_path: null
+        down_size_rate: *id001
+        global_backbone_name: FasterUNet
+        global_loss: *id002
+        name: GlobalSeg3D
+        patch_size: *id003
+    num_channel: 1
+    num_classes: 17
+    num_workers: 16
+    optimizer: &id008 !!python/object/new:easydict.EasyDict
+      dictitems:
+        lr: 0.0003
+        name: AdamW_1
+        weight_decay: 1.0e-05
+      state:
+        lr: 0.0003
+        name: AdamW_1
+        weight_decay: 1.0e-05
+    output_shape: &id009
+    - 17
+    - 480
+    - 480
+    - 288
+    patch_size: &id010
+    - 128
+    - 128
+    - 128
+    precision: '32'
+    profile_debug: false
+    rand_aug_type: heavy
+    scheculer: &id011 !!python/object/new:easydict.EasyDict
+      dictitems:
+        max_epochs: 300
+        name: LinearWarmupCosineAnnealingLRSch
+        warmup_epoch_ratio: 0.1
+      state:
+        max_epochs: 300
+        name: LinearWarmupCosineAnnealingLRSch
+        warmup_epoch_ratio: 0.1
+    seed_number: -1
+    test_only: false
+    train_iteration_per_epoch: 400
+    val_iteration_per_epoch: 30
+  state:
+    batch_size: 1
+    check_val_every_n_epoch: 2
+    ckpt_base_path: ckpts
+    ckpt_path: null
+    dataset_name: Word
+    do_vis: true
+    down_size_rate: *id004
+    epoch: 300
+    fold: -1
+    gpu_id: 0
+    input_shape: *id005
+    label_keys: *id006
+    log_base_path: logs
+    model: *id007
+    num_channel: 1
+    num_classes: 17
+    num_workers: 16
+    optimizer: *id008
+    output_shape: *id009
+    patch_size: *id010
+    precision: '32'
+    profile_debug: false
+    rand_aug_type: heavy
+    scheculer: *id011
+    seed_number: -1
+    test_only: false
+    train_iteration_per_epoch: 400
+    val_iteration_per_epoch: 30

@@ -1,0 +1,12 @@
+# @package _group_
+name: LocalSeg3D
+local_backbone_name: "FasterUNet" # FasterUNet | DeepLab | DeepLabPlus | MedNeXtSmall | MedNeXtMedium | MedNeXtLarge | UNETRSwin | UNETRVit
+overlap_r: [0.5, 0.5, 0.5] # depreciated actually
+pos: 2
+neg: 1
+num_patches: 5
+ckpt_path : null
+sigma_scale : 0.125
+
+defaults:
+  - local_loss: dce_monai # dce_monai | dce_nnunet | rce # dce_nnunet is memory efficient

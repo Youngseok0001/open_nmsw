@@ -1,0 +1,220 @@
+cfg: !!python/object/new:easydict.EasyDict
+  dictitems:
+    batch_size: 1
+    check_val_every_n_epoch: 2
+    ckpt_base_path: ckpts
+    ckpt_path: null
+    dataset_name: Word
+    do_vis: true
+    down_size_rate: &id006
+    - 3
+    - 3
+    - 3
+    epoch: 300
+    fold: -1
+    gpu_id: 0
+    input_shape: &id007
+    - 1
+    - 480
+    - 480
+    - 288
+    label_keys: &id008
+    - background
+    - liver
+    - spleen
+    - left_kidney
+    - right_kidney
+    - stomach
+    - gallbladder
+    - esophagus
+    - pancreas
+    - duodenum
+    - colon
+    - intestine
+    - adrenal
+    - rectum
+    - bladder
+    - Head_of_femur_L
+    - Head_of_femur_R
+    log_base_path: logs
+    model: &id009 !!python/object/new:easydict.EasyDict
+      dictitems:
+        add_aggregation_module: true
+        agg_loss: &id001 !!python/object/new:easydict.EasyDict
+          dictitems:
+            batch: false
+            ce_weight: null
+            dice_weight: null
+            include_background: false
+            lambda_ce: 1
+            lambda_dice: 1
+            name: DiceCELossMONAI
+            reduction: mean
+            softmax: true
+            squared_pred: false
+            to_onehot_y: true
+          state:
+            batch: false
+            ce_weight: null
+            dice_weight: null
+            include_background: false
+            lambda_ce: 1
+            lambda_dice: 1
+            name: DiceCELossMONAI
+            reduction: mean
+            softmax: true
+            squared_pred: false
+            to_onehot_y: true
+        down_size_rate: &id002
+        - 3
+        - 3
+        - 3
+        entropy_multiplier: 1.0e-05
+        final_tau: 0.6666
+        global_backbone_name: FasterUNet
+        global_loss: &id003 !!python/object/new:easydict.EasyDict
+          dictitems:
+            batch: false
+            ce_weight: null
+            dice_weight: null
+            include_background: false
+            lambda_ce: 1
+            lambda_dice: 1
+            name: DiceCELossMONAI
+            reduction: mean
+            softmax: true
+            squared_pred: false
+            to_onehot_y: true
+          state:
+            batch: false
+            ce_weight: null
+            dice_weight: null
+            include_background: false
+            lambda_ce: 1
+            lambda_dice: 1
+            name: DiceCELossMONAI
+            reduction: mean
+            softmax: true
+            squared_pred: false
+            to_onehot_y: true
+        local_backbone_name: FasterUNet
+        local_loss: &id004 !!python/object/new:easydict.EasyDict
+          dictitems:
+            batch: false
+            ce_weight: null
+            dice_weight: null
+            include_background: false
+            lambda_ce: 1
+            lambda_dice: 1
+            name: DiceCELossMONAI
+            reduction: mean
+            softmax: true
+            squared_pred: false
+            to_onehot_y: true
+          state:
+            batch: false
+            ce_weight: null
+            dice_weight: null
+            include_background: false
+            lambda_ce: 1
+            lambda_dice: 1
+            name: DiceCELossMONAI
+            reduction: mean
+            softmax: true
+            squared_pred: false
+            to_onehot_y: true
+        name: NSWNet3D
+        num_infernce_patches: 5
+        num_train_random_patches: 1
+        num_train_topk_patches: 4
+        overlap_r: 0.5
+        patch_size: &id005
+        - 128
+        - 128
+        - 128
+        reduction_mutiplier: 1
+        starting_tau: 0.6666
+      state:
+        add_aggregation_module: true
+        agg_loss: *id001
+        down_size_rate: *id002
+        entropy_multiplier: 1.0e-05
+        final_tau: 0.6666
+        global_backbone_name: FasterUNet
+        global_loss: *id003
+        local_backbone_name: FasterUNet
+        local_loss: *id004
+        name: NSWNet3D
+        num_infernce_patches: 5
+        num_train_random_patches: 1
+        num_train_topk_patches: 4
+        overlap_r: 0.5
+        patch_size: *id005
+        reduction_mutiplier: 1
+        starting_tau: 0.6666
+    num_channel: 1
+    num_classes: 17
+    num_workers: 16
+    optimizer: &id010 !!python/object/new:easydict.EasyDict
+      dictitems:
+        lr: 0.0003
+        name: AdamW_1
+        weight_decay: 1.0e-05
+      state:
+        lr: 0.0003
+        name: AdamW_1
+        weight_decay: 1.0e-05
+    output_shape: &id011
+    - 17
+    - 480
+    - 480
+    - 288
+    patch_size: &id012
+    - 128
+    - 128
+    - 128
+    precision: '32'
+    profile_debug: false
+    rand_aug_type: heavy
+    scheculer: &id013 !!python/object/new:easydict.EasyDict
+      dictitems:
+        max_epochs: 300
+        name: LinearWarmupCosineAnnealingLRSch
+        warmup_epoch_ratio: 0.1
+      state:
+        max_epochs: 300
+        name: LinearWarmupCosineAnnealingLRSch
+        warmup_epoch_ratio: 0.1
+    seed_number: -1
+    test_only: false
+    train_iteration_per_epoch: 400
+    val_iteration_per_epoch: 30
+  state:
+    batch_size: 1
+    check_val_every_n_epoch: 2
+    ckpt_base_path: ckpts
+    ckpt_path: null
+    dataset_name: Word
+    do_vis: true
+    down_size_rate: *id006
+    epoch: 300
+    fold: -1
+    gpu_id: 0
+    input_shape: *id007
+    label_keys: *id008
+    log_base_path: logs
+    model: *id009
+    num_channel: 1
+    num_classes: 17
+    num_workers: 16
+    optimizer: *id010
+    output_shape: *id011
+    patch_size: *id012
+    precision: '32'
+    profile_debug: false
+    rand_aug_type: heavy
+    scheculer: *id013
+    seed_number: -1
+    test_only: false
+    train_iteration_per_epoch: 400
+    val_iteration_per_epoch: 30

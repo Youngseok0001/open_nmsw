@@ -1,0 +1,31 @@
+### config/config.yaml
+defaults:  
+  - optimizer: "AdamW_1"  # SGD | Adam | AdamW
+  - scheculer : "LinearWarmupCosineAnnealingLRSch" # LinearWarmupCosineAnnealingLRSch | PolyLRSch
+  - model: ???  # LocalSeg3D | globalSeg3D | GlobalLocalSeg3D | NSWNet3D
+
+# dataloader args.
+dataset_name: ???  # Word | TotalSegmentatorOrgan | TotalSegmentatorVertebrae | TotalSegmentatorRibs | add more ...
+batch_size: 1 # only batch_size 1 is supported currently
+num_workers: 16
+fold: -1
+
+# training args
+precision: "32"  # full precision (32, '32' or '32-true'), 16bit mixed precision (16, '16', '16-mixed'), (bf16-mixed)
+rand_aug_type: "heavy"  # light | heavy
+seed_number: -1  # if -1 do not set seed
+epoch: 300
+train_iteration_per_epoch: 400 #400
+val_iteration_per_epoch: 30 # 100
+check_val_every_n_epoch: 2 # s
+gpu_id: ???  # peaks the most free gpu when set to -1
+
+# path args
+log_base_path: "logs" 
+ckpt_base_path: "ckpts" 
+test_only: false
+ckpt_path : null
+
+# additional
+do_vis: true
+profile_debug: false

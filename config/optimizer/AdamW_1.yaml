@@ -1,0 +1,4 @@
+# @package _group_
+name: AdamW_1
+lr: 3e-4
+weight_decay: 1e-5

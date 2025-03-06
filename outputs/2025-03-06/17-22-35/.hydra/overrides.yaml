@@ -1,0 +1,4 @@
+- model=GlobalSeg3D
+- dataset_name=Word
+- gpu_id=0
+- ++model.global_backbone_name=FasterUNet

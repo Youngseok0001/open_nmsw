@@ -1,0 +1,18 @@
+# @package _group_
+name: NSWNet3D
+global_backbone_name : "FasterUNet" # FasterUNet | DeepLab | DeepLabPlus | MedNeXtSmall | MedNeXtMedium | MedNeXtLarge | UNETRSwin | UNETRVit
+local_backbone_name: "FasterUNet" # FasterUNet | DeepLab | DeepLabPlus | MedNeXtSmall | MedNeXtMedium | MedNeXtLarge | UNETRSwin | UNETRVit
+overlap_r: 0.5
+num_train_topk_patches: 4 # number of patches sampled based on the objectness-logit produced.
+num_train_random_patches : 1 # numbeer of random patches. one of the patches is for background patch.
+num_infernce_patches: 5 # patches used during test/validation
+starting_tau :  0.6666
+final_tau : 0.6666
+add_aggregation_module : true
+reduction_mutiplier : 1
+entropy_multiplier : 0.00001 #0.0005 # 0.001
+
+defaults: 
+  - local_loss: dce_monai # dce_monai | dce_nnunet | rce # dce_nnunet is memory efficient
+  - global_loss: dce_monai # dce_monai | dce_nnunet | rce # dce_nnunet is memory efficient 
+  - agg_loss : dce_monai # dce_monai | dce_nnunet | rce # dce_monai is memory efficient

@@ -1,0 +1,4 @@
+# @package _group_
+name: LinearWarmupCosineAnnealingLRSch 
+warmup_epoch_ratio: 0.1
+max_epochs: 300

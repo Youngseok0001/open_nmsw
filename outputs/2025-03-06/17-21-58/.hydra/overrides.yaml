@@ -1,0 +1,5 @@
+- model=LocalSeg3D
+- dataset_name=Word
+- gpu_id=0
+- ++model.local_backbone_name=FasterUNet
+- ++model.num_patches=5

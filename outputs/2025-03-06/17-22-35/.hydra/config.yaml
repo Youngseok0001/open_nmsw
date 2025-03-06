@@ -1,0 +1,42 @@
+optimizer:
+  name: AdamW_1
+  lr: 0.0003
+  weight_decay: 1.0e-05
+scheculer:
+  name: LinearWarmupCosineAnnealingLRSch
+  warmup_epoch_ratio: 0.1
+  max_epochs: 300
+model:
+  global_loss:
+    name: DiceCELossMONAI
+    to_onehot_y: true
+    softmax: true
+    squared_pred: false
+    batch: false
+    reduction: mean
+    lambda_dice: 1
+    lambda_ce: 1
+    ce_weight: null
+    dice_weight: null
+    include_background: false
+  name: GlobalSeg3D
+  global_backbone_name: FasterUNet
+  ckpt_path: null
+dataset_name: Word
+batch_size: 1
+num_workers: 16
+fold: -1
+precision: '32'
+rand_aug_type: heavy
+seed_number: -1
+epoch: 300
+train_iteration_per_epoch: 400
+val_iteration_per_epoch: 30
+check_val_every_n_epoch: 2
+gpu_id: 0
+log_base_path: logs
+ckpt_base_path: ckpts
+test_only: false
+ckpt_path: null
+do_vis: true
+profile_debug: false

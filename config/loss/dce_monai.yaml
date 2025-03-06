@@ -1,0 +1,13 @@
+# @package _group_
+name: "DiceCELossMONAI" 
+to_onehot_y: true
+softmax: true
+squared_pred: false
+batch: false
+reduction: "mean"
+lambda_dice: 1
+lambda_ce: 1
+ce_weight: null
+dice_weight: null
+include_background: false
+use_sparse : false
